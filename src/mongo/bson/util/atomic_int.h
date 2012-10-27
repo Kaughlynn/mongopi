@@ -26,14 +26,14 @@ namespace mongo {
 
         operator unsigned() const { return x; }
         unsigned get() const { return x; }
+        inline void set(unsigned newX);
 
         inline AtomicUInt operator++(); // ++prefix
         inline AtomicUInt operator++(int);// postfix++
         inline AtomicUInt operator--(); // --prefix
         inline AtomicUInt operator--(int); // postfix--
-
-      //  inline void zero();
-    inline void zero() { x = 0; } // TODO: this isn't thread safe
+        inline void signedAdd(int by);
+        inline void zero() { x = 0; } // TODO: this isn't thread safe
         volatile unsigned x;
     };
 
